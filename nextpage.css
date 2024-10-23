@@ -1,0 +1,126 @@
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f8f9fa;
+    color: #333;
+    transition: background 0.5s, color 0.5s;
+    overflow-x: hidden;
+}
+
+/* Backgrounds */
+#particle-bg, #confetti-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Success Container Styling */
+.success-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: 600px; /* Limit the width for larger screens */
+    margin: 20px;
+}
+
+/* Button Styles */
+.custom-btn {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    width: 100%;
+}
+
+/* Button Hover Effect */
+.custom-btn:hover {
+    background-color: #3b78c1;
+}
+
+/* Mobile Responsive Styling */
+@media (max-width: 768px) {
+    /* Container Adjustment */
+    .success-container {
+        padding: 20px;
+        border-radius: 8px;
+        margin: 10px;
+    }
+
+    /* Button Adjustment */
+    .custom-btn {
+        font-size: 16px;
+        padding: 10px 0;
+    }
+
+    /* Text Alignment for Smaller Screens */
+    .success-container h1 {
+        font-size: 24px;
+    }
+
+    .success-container p {
+        font-size: 16px;
+    }
+}
+
+/* Very Small Screens Styling */
+@media (max-width: 480px) {
+    /* Container Adjustment for Extra Small Devices */
+    .success-container {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .checkmark-icon img {
+        width: 80px; /* Reduce icon size on small screens */
+    }
+
+    .success-container h1 {
+        font-size: 20px;
+    }
+
+    .success-container p {
+        font-size: 14px;
+    }
+
+    .custom-btn {
+        font-size: 14px;
+    }
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background: #121212;
+    color: #f0f0f0;
+}
+
+.dark-mode .success-container {
+    background: #1e1e1e;
+}
+
+.dark-mode .custom-btn {
+    background-color: #bb86fc;
+}
+
+/* Dark Mode Toggle Styling */
+.dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 20;
+    font-size: 14px;
+}
+
+.toggle-label {
+    font-size: 1em;
+    cursor: pointer;
+}
